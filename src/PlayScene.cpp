@@ -52,6 +52,11 @@ void PlayScene::start()
 	m_pTarget->getTransform()->position = glm::vec2(600.0f, 300.0f);
 	addChild(m_pTarget);
 
+	// Add the StarShip to Scene
+	m_pStarShip = new StarShip();
+	m_pStarShip->getTransform()->position = glm::vec2(200.0f, 300.0f);
+	addChild(m_pStarShip);
+
 	ImGuiWindowFrame::Instance().setGUIFunction(std::bind(&PlayScene::GUI_Function, this));
 }
 
@@ -72,13 +77,10 @@ void PlayScene::GUI_Function() const
 
 	ImGui::Separator();
 
-	static float float3[3] = { 0.0f, 1.0f, 1.5f };
-	if(ImGui::SliderFloat3("My Slider", float3, 0.0f, 2.0f))
+	static float target_position[2] = { 600.0f, 300.0f};
+	if(ImGui::SliderFloat2("Target Position", target_position, 0.0f, 800.0f))
 	{
-		std::cout << float3[0] << std::endl;
-		std::cout << float3[1] << std::endl;
-		std::cout << float3[2] << std::endl;
-		std::cout << "---------------------------\n";
+		m_pTarget->getTransform()->position = glm::vec2(target_position[0], target_position[1]);
 	}
 	
 	ImGui::End();

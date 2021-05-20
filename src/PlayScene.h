@@ -3,6 +3,7 @@
 #define __PLAY_SCENE__
 
 #include "Scene.h"
+#include "StarShip.h"
 #include "Target.h"
 
 class PlayScene : public Scene
@@ -26,6 +27,7 @@ private:
 
 	// Game Objects
 	Target* m_pTarget;
+	StarShip* m_pStarShip;
 	
 };
 
