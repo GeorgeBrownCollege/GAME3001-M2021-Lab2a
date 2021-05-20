@@ -18,9 +18,13 @@ public:
 	virtual void clean() override;
 	virtual void handleEvents() override;
 	virtual void start() override;
+
+	// public functions
+	void moveStarShip() const;
+	
 private:
 	// IMGUI Function
-	void GUI_Function() const;
+	void GUI_Function();
 	std::string m_guiTitle;
 	
 	glm::vec2 m_mousePosition;
@@ -28,7 +32,10 @@ private:
 	// Game Objects
 	Target* m_pTarget;
 	StarShip* m_pStarShip;
+
 	
+	// control variables
+	bool m_toggleSeek;
 };
 
 #endif /* defined (__PLAY_SCENE__) */
